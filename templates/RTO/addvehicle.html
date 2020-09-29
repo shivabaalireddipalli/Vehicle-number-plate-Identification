@@ -1,0 +1,208 @@
+
+
+{% load static %}
+
+
+<!DOCTYPE html>
+<html>
+<title>KNN</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
+.w3-row-padding img {margin-bottom: 12px}
+/* Set the width of the sidebar to 120px */
+.w3-sidebar {width: 120px;background: #222;}
+/* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
+#main {margin-left: 120px}
+/* Remove margins from "page content" on small screens */
+@media only screen and (max-width: 600px) {#main {margin-left: 0}}
+</style>
+<body class="w3-black">
+
+<!-- Icon Bar (Sidebar - hidden on small screens) -->
+<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
+  <!-- Avatar image in top left corner -->
+
+  <a href="#" class="w3-bar-item w3-button w3-padding-large w3-black">
+    <i class="fa fa-home w3-xxlarge"></i>
+    <p>HOME</p>
+  </a>
+  <a href="home" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <i class="fa fa-user w3-xxlarge"></i>
+    <p>GOBACK</p>
+  </a>
+
+</nav>
+
+<!-- Navbar on small screens (Hidden on medium and large screens) -->
+<div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
+  <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
+    <a href="#" class="w3-bar-item w3-button" style="width:25% !important">HOME</a>
+    <a href="#about" class="w3-bar-item w3-button" style="width:25% !important">ABOUT</a>
+    <a href="#photos" class="w3-bar-item w3-button" style="width:25% !important">PHOTOS</a>
+    <a href="#contact" class="w3-bar-item w3-button" style="width:25% !important">CONTACT</a>
+  </div>
+</div>
+
+<!-- Page Content -->
+<div class="w3-padding-large" id="main">
+  <!-- Header/Home -->
+  <header class="w3-container w3-padding-32 w3-center w3-black" id="home">
+    <h1 class="w3-jumbo"><span class="w3-hide-small">Vehicle </span> Re-Identification Based on </h1>
+    <p>Couppled Dictionary Learning</p>
+    <img src="{% static 'RTO/444.jpg' %}" alt="boy" class="w3-image" width="992" height="1108">
+  </header>
+
+
+  <!-- Portfolio Section -->
+
+  <!-- End Portfolio Section -->
+
+
+  <!-- Contact Section -->
+  <div class="w3-padding-64 w3-content w3-text-grey" id="contact">
+    <h2 class="w3-text-light-grey">Upload New Details </h2>
+    <hr style="width:200px" class="w3-opacity">
+
+
+    <form action="{% url 'addvehicles' %}" method="post">
+    {% csrf_token %}
+      <div class="container">
+    <h1> New Vehicle</h1>
+    <h2>{{ message }}</h2>
+    <p>Please fill in this form to create an account.</p>
+    <hr>
+    <label for="emp_id"><b>Reg no</b></label>
+    <input  type="text" placeholder="Enter Regno Id" name="reg_no" required>
+
+          <label for="name"><b>brand</b></label>
+   <select name="carbrand">
+  <option value="Volvo">Volvo</option>
+  <option value="Saab">Saab</option>
+  <option value="Mercedes">Mercedes</option>
+  <option value="Audi">Audi</option>
+</select>
+          <label for="name"><b>car</b></label>
+     <select name="vname">
+  <option value="Veyron">Veyron</option>
+  <option value="City">City</option>
+  <option value="R8">R8</option>
+  <option value="Chiron">Chiron</option>
+</select>
+<br><br>
+
+
+    <label for="dept"><b>Owner Name</b></label>
+    <input type="text" placeholder="Enter Ownername Name" name="Ownername" required>
+
+    <label for="phone"><b>Licence</b></label>
+    <input type="text" placeholder="Enter LicenceS Number" name="Licence" required>
+
+
+    <label for="Address"><b>Address</b></label>
+    <input type="text" placeholder="Enter Adresss" name="Address" required>
+
+
+<br><br>
+    <label for="email"><b>Email</b></label>
+    <input type="email" placeholder="Enter Email" name="Email" required>
+
+
+
+        <label for="email"><b>Age</b></label>
+    <input type="text" placeholder="Enter Age" name="Age" required>
+
+
+        <label for="email"><b>Temp Address</b></label>
+    <input type="text" placeholder="Enter Temp_Address" name="Temp_Address" required>
+<br><br>
+
+
+        <label for="email"><b>Pan</b></label>
+    <input type="text" placeholder="Enter Pan" name="Pan" required>
+
+
+
+        <label for="email"><b>Fuel Type</b></label>
+   <select name="Fuel">
+  <option value="Diesel">Diesel</option>
+  <option value="Gas">Gas</option>
+       <option value="Petrol">Petrol</option>
+
+</select>
+
+        <label for="email"><b>Class</b></label>
+     <select name="Class">
+  <option value="Geared">Geared</option>
+  <option value="Not Geared">Not Geared</option>
+</select>
+<br><br>
+
+        <label for="email"><b>Vehicle_is</b></label>
+    <select name="Vehicle_is">
+  <option value="First">First</option>
+  <option value="Second">Second</option>
+</select>
+
+  <label for="email"><b>YOM</b></label>
+    <input type="date" placeholder="Enter YOM" name="YOM" required>
+
+
+          <label for="email"><b>Color</b></label>
+    <input type="text" placeholder="Enter Color" name="color" required>
+
+<br><br>
+          <label for="email"><b>Engine_NO</b></label>
+    <input type="text" placeholder="Enter Engine_NO" name="Engine_NO" required>
+<br><br>
+        <label for="email"><b>Seating_Cap</b></label>
+     <select name="Seating_Cap">
+  <option value="2">2</option>
+  <option value="4">4</option>
+</select>
+
+<br><br>
+    <hr>
+
+    <button type="submit" class="registerbtn">Upload</button><br>
+        <br>
+              <a href="{% url 'home' %}">Go back</a>
+
+
+  </div>
+
+    <!-- Footer -->
+  <footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+
+  </footer>
+
+<!-- END PAGE CONTENT -->
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
